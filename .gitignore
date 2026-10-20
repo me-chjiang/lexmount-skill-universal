@@ -1,0 +1,4 @@
+node_modules/
+# 含 Lexmount API key 和站点账号
+lexmount-config.yaml
+.DS_Store

@@ -1,0 +1,13 @@
+{
+  "name": "lexmount-skill-universal",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "lexmount": "^0.6.1",
+    "playwright": "^1.63.0",
+    "yaml": "^2.9.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

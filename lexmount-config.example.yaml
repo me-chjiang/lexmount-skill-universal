@@ -1,0 +1,25 @@
+# 复制为 lexmount-config.yaml 后填写（已 git-ignore，不要提交）：
+#   cp lexmount-config.example.yaml ~/.config/lexmount/config.yaml && chmod 600 ~/.config/lexmount/config.yaml
+
+# Lexmount 凭证：控制台 Settings → API Keys
+api-key: ""
+project-id: ""
+base-url: "https://api.lexmount.cn"
+
+# 可选：需要登录的站点。username/password 写的是本文件里的键名，不是值
+# example-username: ""
+# example-password: ""
+# fetch-profiles:
+#   example:
+#     login-url: "https://example.com/login"
+#     logged-in: '^https://example\.com/home'
+#     logged-out: '/login'
+#     username: example-username
+#     password: example-password
+#     selectors:
+#       username: "input[name=username]"
+#       password: "input[name=password]"
+#       submit: "button[type=submit]"
+#     allow-hosts: [example.com]
+#     deny-paths: ["logout", "/delete"]
+#     redact: []
