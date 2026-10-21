@@ -50,6 +50,7 @@ node <skill目录>/fetch.mjs <url> --profile <profile> [--max-chars N] > /tmp/pa
 - **登录由用户本人运行，agent 不要自己跑 `login`。**
   - `--interactive`：遇到滑块等人机验证时，在用户本机浏览器里打开云浏览器的实时画面，由用户完成验证。
   - 登录只尝试一次。提交后失败会记一个标记，之后再登录会被拒绝，必须由用户排查后加 `--retry` 重跑，防止锁号。
+- 抓取时使用登录态的副本：服务端不支持只读 context（2026-10-21 实测返回 HTTP 400 "Read only context is not implemented"），所以每次都先复制一份登录态，以读写方式打开，会话结束后删除。页面上的操作不会写回原登录态；删除失败的副本记在 state 里，下次自动清理。
 - 登录态保存在 Lexmount 持久化 context 中。context ID 存在 `~/.local/state/lexmount-fetch/state.json`（权限 600，在仓库之外）。
 - **agent 只用 `--profile` 抓取。** 这种模式不走 Web Fetch，不点击、不提交表单。
 
@@ -84,7 +85,6 @@ fetch-profiles:
     deny-paths: ["/cpteam/create", "logout"]          # 正则；有副作用的 GET 页面
     warmup: ["https://mis.bjtu.edu.cn/module/module/10/"]  # 可选：抓取前先访问，用于单点登录
     redact: []                                        # 要打码的字符串，如真实姓名
-    context-mode: readOnly                            # 可选，默认 readOnly
 ```
 
 ## 前置条件
